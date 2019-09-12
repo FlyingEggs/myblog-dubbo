@@ -1,0 +1,48 @@
+server:
+  port: 80
+
+spring:
+    thymeleaf:
+            prefix: classpath:/templates/
+            check-template-location: true
+            suffix: .html
+            encoding: UTF-8
+            mode: LEGACYHTML5
+            cache: false
+    aop:
+      auto: true
+      proxy-target-class: true
+    servlet:
+          multipart:
+            enabled: true
+            max-file-size: 100000000
+            max-request-size: 100000000
+dubbo:
+  scan:
+    basePackages: cn.luischen
+  application:
+    name: myblog-consumer
+  registry:
+    address: zookeeper://192.168.146.129:2181?backup=192.168.146.129:2182,192.168.146.129:2183
+
+#pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    returnPageInfo: check
+
+logging:
+  level:
+    cn.luischen.dao : DEBUG
+
+swagger:
+  show: true
+
+qiniu:
+  accesskey: ""
+  serectkey: ""
+  bucket: ""
+  cdn:
+  url: ""
